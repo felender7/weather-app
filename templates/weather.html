@@ -7,12 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>What's the weather like?</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
 </head>
 
 <body>
     <section class="hero is-info">
         <div class="hero-body">
-            <div class="container">
+            <div class="container has-text-centered">
                 <h1 class="title">
                     What's the weather like?
                 </h1>
@@ -23,10 +25,10 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    <form method="POST">
+                    <form method="POST" id="basic-form">
                         <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input class="input" name="city" type="text" placeholder="City Name">
+                            <div class="control is-expanded ">
+                                <input class="input is-info" name="city" type="text" placeholder="City Name" required="true">
                             </div>
                             <div class="control">
                                 <button class="button is-info">
@@ -68,7 +70,7 @@
                                     <p>
                                         <span class="title">{{ weather.city }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather.temperature }}° F</span>
+                                        <span class="subtitle">{{ weather.temperature }}° C</span>
                                         <br> {{ weather.description }}
                                     </p>
                                 </div>
@@ -86,8 +88,22 @@
         </div>
     </section>
     <footer class="footer">
-    <p>© 2021 Weather App | Developer - <a href="https://github.com/felender7"></a>Felender | <a href="http://api.openweathermap.org/"></a>Open Weather Map API</p>
+    <p>© {{dateNow}} Weather App | Developer - <a href="https://github.com/felender7">Felender </a>| <a href="http://api.openweathermap.org/">Open Weather Map API</a></p>
     </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+
+<script>
+ $(document).ready(function() {
+$("#basic-form").validate({
+rules: {
+name : {
+required: true,
+minlength: 3
+}
+</script>
 </body>
 
 </html>

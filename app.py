@@ -1,6 +1,10 @@
 import requests
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy 
+from datetime import datetime
+
+
+
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -43,8 +47,8 @@ def index_get():
 
         weather_data.append(weather)
 
-
-    return render_template('weather.html', weather_data=weather_data)
+    dateNow = datetime.now().strftime('%Y')
+    return render_template('weather.html', weather_data=weather_data, dateNow=dateNow)
 
 #create city
 @app.route('/', methods=['POST'])
